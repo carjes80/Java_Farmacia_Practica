@@ -20,7 +20,7 @@ public class ProductsDao {
 
     //registrar productos
     public boolean registerProductQuery(Products product) {
-        String query = "INSERT INTO product (code, name, description, unit_price, created, updated, category_id)"
+        String query = "INSERT INTO products (code, name, description, unit_price, created, updated, category_id)"
                 + "VALUES (?,?,?,?,?,?,?)";
         Timestamp datetime = new Timestamp(new Date().getTime());
 
@@ -81,7 +81,7 @@ public class ProductsDao {
 
     //modificar productos;
     public boolean updateProductQuery(Products product) {
-        String query = "UPDATE product SET code = ?, name = ?, description = ?, unit_price = ?, updated = ?, category_id = ?"
+        String query = "UPDATE products SET code = ?, name = ?, description = ?, unit_price = ?, updated = ?, category_id = ?"
                 + "WHERE id = ?";
         Timestamp datetime = new Timestamp(new Date().getTime());
 

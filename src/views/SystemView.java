@@ -9,6 +9,7 @@ package views;
 import controllers.CategoriesController;
 import controllers.CustomerController;
 import controllers.EmployeesController;
+import controllers.ProductsController;
 import controllers.SettingsController;
 import controllers.SupplierController;
 import models.Categories;
@@ -19,6 +20,8 @@ import models.Employees;
 import models.EmployeesDao;
 import static models.EmployeesDao.full_name_user;
 import static models.EmployeesDao.rol_user;
+import models.Products;
+import models.ProductsDao;
 import models.Suppliers;
 import models.SuppliesDAO;
 
@@ -43,6 +46,10 @@ public class SystemView extends javax.swing.JFrame {
 // categorias
     Categories category = new Categories();
     CategoriesDAO category_dao = new CategoriesDAO();
+    
+    //productos
+    Products product = new Products();
+    ProductsDao product_dao = new ProductsDao();
     
     public SystemView() {
         initComponents();
@@ -69,6 +76,8 @@ public class SystemView extends javax.swing.JFrame {
          //llamamos al controlador de categorias
         CategoriesController category_section = new CategoriesController(category, category_dao, this);
         category_section.ListAllCategories();
+        //llamamos al controlador de productos
+        ProductsController product_section = new ProductsController(product,product_dao,this);
         
     }
 
