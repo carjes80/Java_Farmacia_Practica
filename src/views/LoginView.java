@@ -64,35 +64,35 @@ public class LoginView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 67, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 67, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         txt_username.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 210, 35));
+        jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 210, 35));
 
         txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 210, 35));
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 35));
 
         btn_enter.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_enter.setText("Ingresar");
         btn_enter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btn_enter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 210, 35));
+        jPanel1.add(btn_enter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 210, 35));
 
         txt_wrong_password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_wrong_password.setForeground(new java.awt.Color(255, 204, 204));
         txt_wrong_password.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_wrong_password.setText("Usuario o contraseña incorrecta");
-        jPanel1.add(txt_wrong_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 220, 30));
+        jPanel1.add(txt_wrong_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 220, 30));
 
         txt_user_null.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_user_null.setForeground(new java.awt.Color(255, 204, 204));
         txt_user_null.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_user_null.setText("¡Escriba usuario y contraseña!");
-        jPanel1.add(txt_user_null, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 220, 30));
+        jPanel1.add(txt_user_null, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 220, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 490, 420));
 
