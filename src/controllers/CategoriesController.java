@@ -236,7 +236,7 @@ public class CategoriesController implements ActionListener, MouseListener, KeyL
     
     //Método para mostrar el nombre de las categorías.
     public void getCategoryName(){
-        List<Categories> list = category_dao.listCategoryQuery(views.txt_search_categories.getText());
+        List<Categories> list = category_dao.listCategoryQuery("");
         for(int i = 0; i< list.size(); i++){
             int id = list.get(i).getId();
             String name = list.get(i).getName();
