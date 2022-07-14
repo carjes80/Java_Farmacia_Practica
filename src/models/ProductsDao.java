@@ -132,7 +132,7 @@ public class ProductsDao {
 
     //buscar producto
     public Products searchProduct(int id) {
-        String query = "SELECT pro.*, ca.name AS category_name FROM products pro INNER JOIN categories ca"
+        String query = "SELECT pro.*, ca.name AS category_name FROM products pro INNER JOIN categories ca "
                 + "ON pro.category_id=ca.id WHERE pro.id = ?";
         Products product = new Products();
         try {

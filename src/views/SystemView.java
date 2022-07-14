@@ -78,6 +78,7 @@ public class SystemView extends javax.swing.JFrame {
         category_section.ListAllCategories();
         //llamamos al controlador de productos
         ProductsController product_section = new ProductsController(product,product_dao,this);
+        product_section.ListAllProducts();
         
     }
 
