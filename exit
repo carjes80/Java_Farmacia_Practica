@@ -1,0 +1,41 @@
+[33mcommit 35cca85a61b5bf53da0865e1df3760c656fc4054[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: carjes80 <salcedoc.fn@gmail.com>
+Date:   Mon Jul 11 21:11:00 2022 -0300
+
+    En el getCategoryName quité la caja de busqueda de categoría porque puede reducir la cantidad de categorías al registrar los productos
+
+[33mcommit a56a088c58a5dbe80c7071a86f1bc2f09a537c92[m
+Author: carjes80 <salcedoc.fn@gmail.com>
+Date:   Mon Jul 11 20:43:13 2022 -0300
+
+    Se agrega funcionalidad al botón de registro de producto, se lista en la pestaña producto todo, se da funcionalidad a abrir menú de producto y se agrega el DynamicComboBox que sirve para listar las categorías registradas en la BD de categorías
+
+[33mcommit b8a15118eac07640ca13c5fc3a01c49ccd32b174[m
+Author: carjes80 <salcedoc.fn@gmail.com>
+Date:   Mon Jul 11 18:38:33 2022 -0300
+
+    Se crea el products controller
+
+[33mcommit 5cf7f97279c10ce895d3d935d0f32b8412bcdaf8[m
+Author: carjes80 <salcedoc.fn@gmail.com>
+Date:   Mon Jul 11 18:32:41 2022 -0300
+
+    últimos cambios
+
+[33mcommit 98f6c6a79567db55fb08f43b32a520a5faf08cd9[m
+Author: carjes80 <salcedoc.fn@gmail.com>
+Date:   Mon Jul 11 16:52:41 2022 -0300
+
+    Solo subí un poco los cuadros de texto de login para probar el commit desde git bash
+
+[33mcommit 83b89733b5848c4c6d9b36861db6b32b6d060d2b[m
+Author: carjes80 <salcedoc.fn@gmail.com>
+Date:   Mon Jul 11 16:16:58 2022 -0300
+
+    Ignorar archivos
+
+[33mcommit 31ab76d3a649017936b3cb1ad24bf0073494c2f6[m
+Author: carjes80 <salcedoc.fn@gmail.com>
+Date:   Mon Jul 11 16:04:05 2022 -0300
+
+    Commit inicial, ya se tiene avance con el desarrollo del módulo, vista y estoy terminando con el controlador
