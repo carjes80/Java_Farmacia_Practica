@@ -160,14 +160,26 @@ public class EmployeesDao {
     public boolean deleteEmployeeQuery(int id, String name) {
         //Employees employee_D = new Employees();
         String query = "DELETE FROM employees WHERE id = " + id;
-        String name_to_be_deleted = "";
-        String query_confirm = "SELECT * FROM employees WHERE id =" + id;
+        String name_to_be_deleted="";
+        String query_confirm = "SELECT full_name FROM employees WHERE id = ?";
 
         try {
-                           
-            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Empleado " + name, " PRECAUCIÓN ",
+            //System.out.println("name antes conn tbd ' " + name_to_be_deleted + " '");
+            conn = cn.getConnection();
+            //System.out.println("getCon");
+            pst = conn.prepareStatement(query_confirm);
+            //System.out.println("queryconfsent");
+            pst.setInt(1, id);
+            rs=pst.executeQuery();
+            //System.out.println("exec");
+            rs.next();
+            name_to_be_deleted = rs.getString("full_name");
+            //System.out.println("name a enviar conn tbd " + name_to_be_deleted);
+
+            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Empleado " + name_to_be_deleted, " PRECAUCIÓN ",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                conn = cn.getConnection();
+                //System.out.println("name desp conn tbd " + name_to_be_deleted);
+               // conn = cn.getConnection();
                 pst = conn.prepareStatement(query);
                 pst.execute();
 

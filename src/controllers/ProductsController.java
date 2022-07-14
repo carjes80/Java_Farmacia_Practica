@@ -34,6 +34,13 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
         this.views.jLabelProducts.addMouseListener(this);
         //Boton registrar
         this.views.btn_register_product.addActionListener(this);
+        //Boton de modificar producto
+        this.views.btn_update_product.addActionListener(this);
+        //Boton de eliminar producto
+        this.views.btn_delete_product.addActionListener(this);
+        //Boton de cancelar
+        this.views.btn_cancel_product.addActionListener(this);
+
         this.views.products_table.addMouseListener(this);
         //Buscador
         this.views.txt_search_product.addKeyListener(this);
@@ -41,7 +48,7 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == views.btn_register_product) {
+        if (e.getSource() == views.btn_register_product) {  //REGISTRAR
             if (views.txt_product_code.getText().equals("")
                     || views.txt_product_name.getText().equals("")
                     || views.txt_product_unit_price.getText().equals("")
@@ -49,30 +56,79 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
                 markNullFields();
             } else {
-                product.setCode(Integer.parseInt(views.txt_product_code.getText()));
+                product.setCode(Integer.parseInt(views.txt_product_code.getText().trim()));
                 product.setName(views.txt_product_name.getText().trim());
                 product.setDescription(views.txt_product_description.getText().trim());
                 product.setUnit_price(Double.parseDouble(views.txt_product_unit_price.getText()));
                 DynamicComboBox category_id = (DynamicComboBox) views.cmb_product_category.getSelectedItem();
                 product.setCategory_id(category_id.getId());
+                //    System.out.println("Se envía a registrar   ->"+product.getId());
 
                 if (product_dao.registerProductQuery(product)) {
                     JOptionPane.showMessageDialog(null, "Producto registrado con éxito");
-                     cleanTable();
-                ListAllProducts();
+                    cleanTable();
+                    ListAllProducts();
 
-                cleanFields();
-                initFields();
+                    cleanFields();
+                    initFields();
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error ");
                 }
 
             }
 
+        } else if (e.getSource() == (views.btn_update_product)) {       // ACTUALIZAR
+            //   System.out.println("Action   ->"+product.getId());
+            if (views.txt_product_code.getText().equals("")
+                    || views.txt_product_id.getText().equals("")
+                    || views.txt_product_name.getText().equals("")
+                    || views.txt_product_unit_price.getText().equals("")
+                    || views.txt_product_description.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Primero seleccione un producto");
+                markNullFields();
+            } else {
+                product.setCode(Integer.parseInt(views.txt_product_code.getText().trim()));
+                product.setName(views.txt_product_name.getText().trim());
+                product.setDescription(views.txt_product_description.getText().trim());
+                product.setUnit_price(Double.parseDouble(views.txt_product_unit_price.getText()));
+                DynamicComboBox category_id = (DynamicComboBox) views.cmb_product_category.getSelectedItem();
+                product.setCategory_id(category_id.getId());
+                product.setId(Integer.parseInt(views.txt_product_id.getText().trim()));
+
+                //   System.out.println("Se envía   ->"+product.getId());
+                if (product_dao.updateProductQuery(product)) {
+                    JOptionPane.showMessageDialog(null, "Producto actualizado con éxito");
+                    cleanTable();
+                    ListAllProducts();
+
+                    cleanFields();
+                    initFields();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error ");
+                }
+            }
+        } else if (e.getSource() == views.btn_delete_product) {     // Eliminar
+            if (views.txt_product_id.equals("")) {
+                JOptionPane.showMessageDialog(null, "Primero seleccione un producto");
+                markNullFields();
+            } else {
+                product_dao.deleteProductQuery(Integer.parseInt(views.txt_product_id.getText().trim()));
+                cleanTable();
+                ListAllProducts();
+
+                cleanFields();
+                initFields();
+            }
+        } else if (e.getSource() == views.btn_cancel_product) {
+            views.txt_search_product.setText("");
+            cleanTable();
+            ListAllProducts();
+            cleanFields();
+            initFields();
         }
     }
-
     // Listar los productos
+
     public void ListAllProducts() {
         if (rol.equals("Administrador") || rol.equals("Auxiliar")) {
             List<Products> list = product_dao.listProductQuery(views.txt_search_product.getText());
@@ -87,6 +143,7 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
                 row[5] = list.get(i).getProduct_quantity();
                 row[6] = list.get(i).getCategory_name();
                 model.addRow(row);
+                //  System.out.println("Se lista->"+product.getId());
             }
             views.products_table.setModel(model);
 
@@ -149,7 +206,7 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
                 ListAllProducts();
 
                 cleanFields();
-               // views.jTabbedPane1.setEnabledAt(0, false);
+                //views.jTabbedPane1.setEnabledAt(0, false);
                 //views.jLabelProducts.setEnabled(false);
                 //JOptionPane.showMessageDialog(null, "No tienes privilegios");
             }
@@ -159,7 +216,9 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
             cleanFields();
             int row = views.products_table.rowAtPoint(e.getPoint());
             views.txt_product_id.setText(views.products_table.getValueAt(row, 0).toString());
+            //System.out.println("Antes de llamar al modulo search product (product dao  ->"+product.getId());
             product = product_dao.searchProduct(Integer.parseInt(views.txt_product_id.getText()));
+            // System.out.println("despues de llamar al modulo search product (product dao  ->"+product.getId());
             views.txt_product_code.setText("" + product.getCode());
             views.txt_product_name.setText(product.getName());
             views.txt_product_description.setText(product.getDescription());
@@ -167,11 +226,6 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
             views.cmb_product_category.setSelectedItem(new DynamicComboBox(product.getCategory_id(), product.getCategory_name()));
             //deshabilitar
             views.btn_register_product.setEnabled(false);
-                
-              
-
-              
-               
 
         }
     }
@@ -236,6 +290,7 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
 
         views.btn_register_product.setEnabled(true);
         views.txt_product_name.setText("");
+        views.txt_product_id.setText("");
         views.txt_product_code.setText("");
         views.txt_product_description.setText("");
         views.txt_product_unit_price.setText("");

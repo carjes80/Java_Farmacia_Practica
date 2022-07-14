@@ -47,7 +47,7 @@ public class ProductsDao {
     public List listProductQuery(String value) {
         List<Products> list_products = new ArrayList();
         String query = "SELECT pro.*, ca.name AS category_name FROM products pro, categories ca WHERE pro.category_id=ca.id";
-        String query_search_products = "SELECT pro.*, ca.name AS category_name FROM products pro INNER JOIN categories ca"
+        String query_search_products = "SELECT pro.*, ca.name AS category_name FROM products pro INNER JOIN categories ca "
                 + "ON pro.category_id=ca.id WHERE pro.name LIKE '%" + value + "%'";
 
         try {
@@ -81,7 +81,7 @@ public class ProductsDao {
 
     //modificar productos;
     public boolean updateProductQuery(Products product) {
-        String query = "UPDATE products SET code = ?, name = ?, description = ?, unit_price = ?, updated = ?, category_id = ?"
+        String query = "UPDATE products SET code = ?, name = ?, description = ?, unit_price = ?, updated = ?, category_id = ? "
                 + "WHERE id = ?";
         Timestamp datetime = new Timestamp(new Date().getTime());
 
@@ -160,7 +160,7 @@ public class ProductsDao {
 
     //buscar producto por código
     public Products searchProductByCode(int code) {
-        String query = "ELECT products.id, products.name FROM products WHERE products.code = ?";
+        String query = "SELECT products.id, products.name FROM products WHERE products.code = ?";
         Products product = new Products();
         try {
             conn = cn.getConnection();
