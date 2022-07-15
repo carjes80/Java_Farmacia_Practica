@@ -78,7 +78,7 @@ public class CustomersDao {
     //Modificar clientes
     public boolean updateCustomerQuery(Customers customer) {
         String query = "UPDATE customers SET fullname = ?, address = ?, telephone = ?, email = ?, updated = ? WHERE id"
-                + "= ?";
+                + " = ?";
 
         Timestamp datetime = new Timestamp(new Date().getTime());
 

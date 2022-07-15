@@ -95,7 +95,7 @@ public class CustomerController implements ActionListener, MouseListener, KeyLis
                 markNullFields();
 
             } else {
-
+                customer.setId(Integer.parseInt(views.txt_customer_id.getText().trim()));
                 customer.setFull_name(views.txt_customer_fullname.getText().trim());
                 customer.setAddress(views.txt_customer_address.getText().trim());
                 customer.setTelephone(views.txt_customer_telephone.getText().trim());

@@ -10,6 +10,7 @@ import controllers.CategoriesController;
 import controllers.CustomerController;
 import controllers.EmployeesController;
 import controllers.ProductsController;
+import controllers.PurchasesController;
 import controllers.SettingsController;
 import controllers.SupplierController;
 import models.Categories;
@@ -22,6 +23,8 @@ import static models.EmployeesDao.full_name_user;
 import static models.EmployeesDao.rol_user;
 import models.Products;
 import models.ProductsDao;
+import models.Purchases;
+import models.PurchasesDao;
 import models.Suppliers;
 import models.SuppliesDAO;
 
@@ -51,6 +54,11 @@ public class SystemView extends javax.swing.JFrame {
     Products product = new Products();
     ProductsDao product_dao = new ProductsDao();
     
+    //purchases
+    Purchases purchase = new Purchases();
+    PurchasesDao purchase_dao = new PurchasesDao();
+    
+    
     public SystemView() {
         initComponents();
         setSize(1208, 680);//definimos el tamaño
@@ -79,6 +87,9 @@ public class SystemView extends javax.swing.JFrame {
         //llamamos al controlador de productos
         ProductsController product_section = new ProductsController(product,product_dao,this);
         product_section.ListAllProducts();
+        //llamamos al controlador de purchases
+        PurchasesController purchase_section = new PurchasesController(purchase,purchase_dao,this);
+        //purchase_section.ListAllProducts();
         
     }
 
@@ -1985,13 +1996,13 @@ public class SystemView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_add_product_sale;
-    private javax.swing.JButton btn_add_product_to_buy;
+    public javax.swing.JButton btn_add_product_to_buy;
     public javax.swing.JButton btn_cancel_categories;
     public javax.swing.JButton btn_cancel_customer;
     public javax.swing.JButton btn_cancel_employee;
     public javax.swing.JButton btn_cancel_product;
     public javax.swing.JButton btn_cancel_supplier;
-    private javax.swing.JButton btn_confirm_purchase;
+    public javax.swing.JButton btn_confirm_purchase;
     public javax.swing.JButton btn_confirm_sale;
     public javax.swing.JButton btn_delete_categories;
     public javax.swing.JButton btn_delete_customer;
@@ -2000,7 +2011,7 @@ public class SystemView extends javax.swing.JFrame {
     public javax.swing.JButton btn_delete_supplier;
     private javax.swing.JButton btn_logout;
     public javax.swing.JButton btn_modify_data;
-    private javax.swing.JButton btn_new_purchase;
+    public javax.swing.JButton btn_new_purchase;
     public javax.swing.JButton btn_new_sale;
     private javax.swing.JButton btn_photo;
     public javax.swing.JButton btn_register_categories;
@@ -2008,7 +2019,7 @@ public class SystemView extends javax.swing.JFrame {
     public javax.swing.JButton btn_register_employee;
     public javax.swing.JButton btn_register_product;
     public javax.swing.JButton btn_register_supplier;
-    private javax.swing.JButton btn_remove_purchase;
+    public javax.swing.JButton btn_remove_purchase;
     public javax.swing.JButton btn_remove_sale;
     public javax.swing.JButton btn_update_categories;
     public javax.swing.JButton btn_update_customer;
@@ -2017,7 +2028,7 @@ public class SystemView extends javax.swing.JFrame {
     public javax.swing.JButton btn_update_supplier;
     public javax.swing.JTable categories_table;
     public javax.swing.JComboBox<Object> cmb_product_category;
-    public javax.swing.JComboBox<String> cmb_purchase_supplier;
+    public javax.swing.JComboBox<Object> cmb_purchase_supplier;
     public javax.swing.JComboBox<String> cmb_rol;
     public javax.swing.JComboBox<String> cmb_supplier_city;
     public javax.swing.JComboBox<String> cmb_supplier_search_by;

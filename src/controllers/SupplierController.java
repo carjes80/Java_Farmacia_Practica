@@ -10,9 +10,11 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.DynamicComboBox;
 import static models.EmployeesDao.rol_user;
 import models.Suppliers;
 import models.SuppliesDAO;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import views.SystemView;
 
 public class SupplierController implements ActionListener, MouseListener, KeyListener {
@@ -46,6 +48,8 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
         this.views.btn_cancel_supplier.addActionListener(this);
         //label de proveedores
         this.views.jLabelSuppliers.addMouseListener(this);
+        getSupplierName();
+        AutoCompleteDecorator.decorate(views.cmb_purchase_supplier);
 
     }
 
@@ -339,5 +343,14 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
             ListAllSuppliers();
         }
 
+    }
+    //Método para mostrar el nombre del proveedor
+    public void getSupplierName(){
+        List<Suppliers> list = supplier_dao.listSuppliersQuery("","name");
+        for(int i = 0; i< list.size(); i++){
+            int id = list.get(i).getId();
+            String name = list.get(i).getName();
+            views.cmb_purchase_supplier.addItem(new DynamicComboBox(id,name));
+        }
     }
 }
