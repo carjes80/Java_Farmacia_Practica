@@ -48,9 +48,10 @@ public class EmployeesController implements ActionListener, MouseListener, KeyLi
 
         //boton de modificar contraseña
         this.views.btn_modify_data.addActionListener(this);
-        
+
         //label de employee en escucha
         this.views.jLabelEmployees.addMouseListener(this);
+        this.views.jLabelSettings.addMouseListener(this);
         Profile();
     }
 
@@ -185,7 +186,7 @@ public class EmployeesController implements ActionListener, MouseListener, KeyLi
                         JOptionPane.showMessageDialog(null, "Contraseña modificada con éxito");
                         views.txt_profile_password_modify.setText("");
                         views.txt_profile_passwor_modify_confirm.setText("");
-                        
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al modificar la contraseña");
                     }
@@ -223,16 +224,14 @@ public class EmployeesController implements ActionListener, MouseListener, KeyLi
             //System.out.println("El rol es en el else es" + rol);
         }
     }
-    
-    public void Profile(){
-        this.views.txt_profile_id.setText(""+id_user);
+
+    public void Profile() {
+        this.views.txt_profile_id.setText("" + id_user);
         this.views.txt_profile_name.setText(full_name_user);
         this.views.txt_profile_phone.setText(telephone_user);
         this.views.txt_profile_address.setText(address_user);
         this.views.txt_profile_email.setText(email_user);
-        
-             
-        
+
     }
 
     @Override
@@ -254,22 +253,28 @@ public class EmployeesController implements ActionListener, MouseListener, KeyLi
             views.txt_employee_password.setEnabled(false);
             views.btn_register_employee.setEnabled(false);
 
-        } else if (e.getSource() == views.jLabelEmployees){
-            if(rol_user.equals("Administrador")){
+        } else if (e.getSource() == views.jLabelEmployees) {
+            if (rol_user.equals("Administrador")) {
                 views.jTabbedPane1.setSelectedIndex(4);
                 // limpiar la tabla
                 cleanTable();
                 cleanFields();
                 ListAllEmployees();
-            }else{
+            } else {
                 views.jTabbedPane1.setEnabledAt(4, false);
                 views.jLabelEmployees.setEnabled(false);
-                JOptionPane.showMessageDialog(null,"No tienes privilegios");
-                
-            }
-            //deshabilitar la pestaña empleados
-        }
+                JOptionPane.showMessageDialog(null, "No tienes privilegios");
 
+            }
+
+        } else if (e.getSource() == views.jLabelSettings) {
+            
+                views.jTabbedPane1.setSelectedIndex(8);
+                // limpiar la tabla
+                
+            
+            }
+        
     }
 
     @Override

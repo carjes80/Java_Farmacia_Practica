@@ -96,7 +96,7 @@ public class PurchasesDao {
                 purchase.setId(rs.getInt("id"));
                 purchase.setSupplier_name_product(rs.getString("supplier_name"));
                 purchase.setTotal(rs.getDouble("total"));
-                purchase.setCreated("created");
+                purchase.setCreated(rs.getString("created"));
                 list_purchase.add(purchase);
             }
         } catch (SQLException e) {

@@ -130,6 +130,12 @@ public class SystemView extends javax.swing.JFrame {
         jLabelPurchases = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btn_photo = new javax.swing.JButton();
+        btn_logout = new javax.swing.JButton();
+        label_name_employee = new javax.swing.JLabel();
+        label_rol_employeer = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -315,12 +321,6 @@ public class SystemView extends javax.swing.JFrame {
         txt_profile_password_modify = new javax.swing.JPasswordField();
         txt_profile_passwor_modify_confirm = new javax.swing.JPasswordField();
         btn_modify_data = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        btn_photo = new javax.swing.JButton();
-        btn_logout = new javax.swing.JButton();
-        label_name_employee = new javax.swing.JLabel();
-        label_rol_employeer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -540,6 +540,38 @@ public class SystemView extends javax.swing.JFrame {
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
+
+        jPanel6.setBackground(new java.awt.Color(18, 45, 61));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("FARMACIA VIDA NATURAL");
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 340, 60));
+
+        btn_photo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_photo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man.png"))); // NOI18N
+        btn_photo.setText("Foto");
+        jPanel6.add(btn_photo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 160, 65));
+
+        btn_logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_logout.setText("Salir");
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 35, -1, 30));
+
+        label_name_employee.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label_name_employee.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(label_name_employee, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 110, 20));
+
+        label_rol_employeer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label_rol_employeer.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(label_rol_employeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 120, 20));
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 1010, 100));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1859,38 +1891,6 @@ public class SystemView extends javax.swing.JFrame {
         jTabbedPane1.addTab("Perfil", jPanel11);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 1010, 580));
-
-        jPanel6.setBackground(new java.awt.Color(18, 45, 61));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("FARMACIA VIDA NATURAL");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 340, 60));
-
-        btn_photo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_photo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man.png"))); // NOI18N
-        btn_photo.setText("Foto");
-        jPanel6.add(btn_photo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 160, 65));
-
-        btn_logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_logout.setText("Salir");
-        btn_logout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_logoutActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 35, -1, 30));
-
-        label_name_employee.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        label_name_employee.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(label_name_employee, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 110, 20));
-
-        label_rol_employeer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        label_rol_employeer.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(label_rol_employeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 120, 20));
-
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 1010, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

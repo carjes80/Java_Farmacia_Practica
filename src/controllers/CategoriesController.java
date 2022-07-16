@@ -63,6 +63,9 @@ public class CategoriesController implements ActionListener, MouseListener, KeyL
                 if (category_dao.registerCategoryQuery(category)) {
                     JOptionPane.showMessageDialog(null, "Registrado con éxito");
                     ListAllCategories();
+                    clearCategoryName();
+                    getCategoryName();
+                    //AutoCompleteDecorator.decorate(views.cmb_product_category);
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
                 }
@@ -82,6 +85,9 @@ public class CategoriesController implements ActionListener, MouseListener, KeyL
                     if (category_dao.updateCategoryQuery(category)) {
                         ListAllCategories();
                         JOptionPane.showMessageDialog(null, "Categoría modificada");
+                        clearCategoryName();
+                    getCategoryName();
+                        //AutoCompleteDecorator.decorate(views.cmb_product_category);
                     } else {
                         // JOptionPane.showMessageDialog(null, "Error al modificar");
                     }
@@ -105,6 +111,10 @@ public class CategoriesController implements ActionListener, MouseListener, KeyL
                     initFields();
                     // listar clientes
                     ListAllCategories();
+                    clearCategoryName();
+                    getCategoryName();
+                        
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo eliminar");
                 }
@@ -243,4 +253,9 @@ public class CategoriesController implements ActionListener, MouseListener, KeyL
             views.cmb_product_category.addItem(new DynamicComboBox(id,name));
         }
     }
+    
+    public void clearCategoryName(){
+                    views.cmb_product_category.removeAllItems();
+        }
+    
 }
