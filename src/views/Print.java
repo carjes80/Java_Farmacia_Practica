@@ -91,6 +91,7 @@ public class Print extends javax.swing.JFrame {
         btn_print_purchase = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(620, 630));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         form_print.setBackground(new java.awt.Color(152, 202, 63));
@@ -128,11 +129,11 @@ public class Print extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", "Subtotal", "Proveedor", "Comprador por:", "Fecha"
+                "Producto", "Qty", "Precio", "Subtotal", "Proveedor", "Comprador por:", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
