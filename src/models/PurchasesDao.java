@@ -66,7 +66,7 @@ public class PurchasesDao {
     //método para obtener el ID de la compra;
     public int purchaseId() {
         int id = 0;
-        String query = "SELECT MAX (id) AS id FROM purchases";
+        String query = "SELECT MAX(id) AS id FROM purchases";
         try {
             conn = cn.getConnection();
             pst = conn.prepareStatement(query);

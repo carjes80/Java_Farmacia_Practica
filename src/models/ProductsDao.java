@@ -199,7 +199,7 @@ public class ProductsDao {
     }
 // actualizar stock
     public boolean updateStockQuery(int amount,int product_id){
-        String query = "UPDATE products SET produc_quantity = ? WHERE id = ?";
+        String query = "UPDATE products SET product_quantity = ? WHERE id = ?";
         try {
             conn = cn.getConnection();
             pst = conn.prepareStatement(query);
