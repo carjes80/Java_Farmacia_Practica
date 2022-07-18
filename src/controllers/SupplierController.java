@@ -48,7 +48,9 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
         this.views.btn_cancel_supplier.addActionListener(this);
         //label de proveedores
         this.views.jLabelSuppliers.addMouseListener(this);
+        clearSupplierName();
         getSupplierName();
+
         AutoCompleteDecorator.decorate(views.cmb_purchase_supplier);
 
     }
@@ -83,6 +85,8 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
                     initFields();
                     // listar clientes
                     ListAllSuppliers();
+                    clearSupplierName();
+                    getSupplierName();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al registrar");
                 }
@@ -134,6 +138,8 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
                     initFields();
                     // listar clientes
                     ListAllSuppliers();
+                    clearSupplierName();
+                    getSupplierName();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Registrar");
                 }
@@ -157,6 +163,8 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
                     initFields();
                     // listar clientes
                     ListAllSuppliers();
+                    clearSupplierName();
+                    getSupplierName();
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo eliminar");
                 }
@@ -286,11 +294,11 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
                 cleanFields();
                 initFields();
                 ListAllSuppliers();
-                
-            } else{
+
+            } else {
                 views.jTabbedPane1.setEnabledAt(5, false);
                 views.jLabelSuppliers.setEnabled(false);
-                JOptionPane.showMessageDialog(null,"No tienes privilegios");
+                JOptionPane.showMessageDialog(null, "No tienes privilegios");
             }
         }
 
@@ -344,13 +352,18 @@ public class SupplierController implements ActionListener, MouseListener, KeyLis
         }
 
     }
+
     //Método para mostrar el nombre del proveedor
-    public void getSupplierName(){
-        List<Suppliers> list = supplier_dao.listSuppliersQuery("","name");
-        for(int i = 0; i< list.size(); i++){
+    public void getSupplierName() {
+        List<Suppliers> list = supplier_dao.listSuppliersQuery("", "name");
+        for (int i = 0; i < list.size(); i++) {
             int id = list.get(i).getId();
             String name = list.get(i).getName();
-            views.cmb_purchase_supplier.addItem(new DynamicComboBox(id,name));
+            views.cmb_purchase_supplier.addItem(new DynamicComboBox(id, name));
         }
+    }
+
+    public void clearSupplierName() {
+        views.cmb_purchase_supplier.removeAllItems();
     }
 }

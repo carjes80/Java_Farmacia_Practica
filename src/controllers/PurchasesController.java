@@ -50,7 +50,7 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
         this.views.txt_purchase_product_code.addKeyListener(this);
         this.views.txt_purchase_price.addKeyListener(this);
         this.views.txt_purchase_product_amount.addKeyListener(this);
-        views.jTabbedPane1.addKeyListener(this);
+        this.views.jTabbedPane1.addKeyListener(this);
         this.views.btn_new_purchase.addActionListener(this);
 
         this.views.jLabelPurchases.addMouseListener(this);
@@ -148,11 +148,12 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == views.btn_add_product_to_buy) {
+            
             DynamicComboBox supplier_cmb = (DynamicComboBox) views.cmb_purchase_supplier.getSelectedItem();
             int supplier_id = supplier_cmb.getId();
             //System.out.println("Entró al boton agregar");
 
-            if (getIdSupplier == 0 || getIdSupplier == supplier_id) {
+            if (getIdSupplier == 0 || getIdSupplier == supplier_id || views.purchase_table.getRowCount()==0) {
                 getIdSupplier = supplier_id;
                 int amount;
                 if (views.txt_purchase_product_amount.getText().equals("")) {
@@ -211,9 +212,14 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
         } else if (e.getSource() == views.btn_confirm_purchase) {
             insertPurchase();
         } else if (e.getSource() == views.btn_remove_purchase) {
-            if (views.purchase_table.getSelectedRow() < 0) {
+            if (views.purchase_table.getSelectedRow() < 0 && views.purchase_table.getRowCount() > 0) {
                 JOptionPane.showMessageDialog(null, "Seleccione el producto de la tabla que desea eliminar");
-            } else {
+            } else if (views.purchase_table.getRowCount() == 0){
+                cleanTableTemp();
+            cleanFieldsPurchases();
+            initFields();
+            getIdSupplier = 0;
+            }else{
                 model = (DefaultTableModel) views.purchase_table.getModel();
                 model.removeRow(views.purchase_table.getSelectedRow());
                 calculatePurchase();
@@ -222,6 +228,8 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
         } else if (e.getSource() == views.btn_new_purchase) {
             cleanTableTemp();
             cleanFieldsPurchases();
+            initFields();
+            getIdSupplier = 0;
         }
 
     }
@@ -336,5 +344,8 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
 
         }
 
+    }
+    public void initFields(){
+        getIdSupplier = 0;
     }
 }

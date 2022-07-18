@@ -30,7 +30,7 @@ public class Print extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Factura de compra");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        txt_invoice.setText(""+id);
+        txt_invoice.setText("-00000"+id);
         ListAllPurchasesDetail(id);
         calculatePurchase();
     }
@@ -65,7 +65,7 @@ public class Print extends javax.swing.JFrame {
             total = total + Double.parseDouble(String.valueOf(purchase_detail_table.getValueAt(i, 3)));
 
         }
-        txt_total.setText("" + total);
+        txt_total.setText(" " + total+" $");
     }
 
     /**
@@ -83,6 +83,7 @@ public class Print extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_invoice = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         purchase_detail_table = new javax.swing.JTable();
@@ -91,7 +92,7 @@ public class Print extends javax.swing.JFrame {
         btn_print_purchase = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(620, 630));
+        setMinimumSize(new java.awt.Dimension(680, 820));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         form_print.setBackground(new java.awt.Color(152, 202, 63));
@@ -115,7 +116,13 @@ public class Print extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
         txt_invoice.setEditable(false);
-        jPanel1.add(txt_invoice, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, 30));
+        txt_invoice.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txt_invoice, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 70, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Factura:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 45, -1, 30));
 
         form_print.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 70));
 
@@ -147,16 +154,18 @@ public class Print extends javax.swing.JFrame {
             purchase_detail_table.getColumnModel().getColumn(6).setMinWidth(80);
         }
 
-        form_print.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 620, 240));
+        form_print.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 610, 240));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Total:");
-        form_print.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
+        form_print.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, -1, -1));
 
         txt_total.setEditable(false);
-        form_print.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, 140, 30));
+        txt_total.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_total.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        form_print.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 110, 20));
 
-        getContentPane().add(form_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 520));
+        getContentPane().add(form_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 610, 520));
 
         btn_print_purchase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_print_purchase.setText("IMPRIMIR");
@@ -165,7 +174,7 @@ public class Print extends javax.swing.JFrame {
                 btn_print_purchaseActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_print_purchase, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, -1, -1));
+        getContentPane().add(btn_print_purchase, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,6 +202,7 @@ public class Print extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

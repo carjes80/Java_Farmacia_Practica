@@ -28,7 +28,7 @@ public class SettingsController implements MouseListener {
     }
 
     public void icon(){
-        System.out.println("JTABBED "+views.jTabbedPane1.getSelectedIndex());
+        //System.out.println("JTABBED "+views.jTabbedPane1.getSelectedIndex());
         switch (views.jTabbedPane1.getSelectedIndex()){
             case 0 ->{
                 views.jLabelProducts.setForeground(Color.yellow);
