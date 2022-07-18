@@ -25,7 +25,7 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
     private Purchases purchase;
     private PurchasesDao purchase_dao;
     private SystemView views;
-    String rol = rol_user;
+    private String rol = rol_user;
     private int getIdSupplier = 0;
     private int item = 0;
     DefaultTableModel model = new DefaultTableModel();
@@ -82,7 +82,7 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
             cleanFieldsPurchases();
             Print print = new Print(purchase_id);
             print.setVisible(true);
-            
+
         }
 
     }
@@ -154,7 +154,7 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
 
             if (getIdSupplier == 0 || getIdSupplier == supplier_id) {
                 getIdSupplier = supplier_id;
-                int amount = 1;
+                int amount;
                 if (views.txt_purchase_product_amount.getText().equals("")) {
                     amount = 1;
                 } else {
@@ -211,14 +211,19 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
         } else if (e.getSource() == views.btn_confirm_purchase) {
             insertPurchase();
         } else if (e.getSource() == views.btn_remove_purchase) {
-            model = (DefaultTableModel) views.purchase_table.getModel();
-            model.removeRow(views.purchase_table.getSelectedRow());
-            calculatePurchase();
-            views.txt_purchase_product_code.requestFocus();
+            if (views.purchase_table.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(null, "Seleccione el producto de la tabla que desea eliminar");
+            } else {
+                model = (DefaultTableModel) views.purchase_table.getModel();
+                model.removeRow(views.purchase_table.getSelectedRow());
+                calculatePurchase();
+                views.txt_purchase_product_code.requestFocus();
+            }
         } else if (e.getSource() == views.btn_new_purchase) {
             cleanTableTemp();
             cleanFieldsPurchases();
         }
+
     }
 
     @Override
@@ -246,9 +251,9 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
                 ListAllPurchases();
 
             } else {
-                views.jTabbedPane1.setSelectedIndex(7);
-                cleanTable();
-                ListAllPurchases();
+                views.jLabelReports.setEnabled(false);
+                
+                
 
             }
         }
@@ -284,7 +289,7 @@ public class PurchasesController implements KeyListener, ActionListener, MouseLi
         if (e.getSource() == views.txt_purchase_product_code) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 if (views.txt_purchase_product_code.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Ingresa el códugo del producto");
+                    JOptionPane.showMessageDialog(null, "Ingresa el código del producto");
                 } else {
                     int id = Integer.parseInt(views.txt_purchase_product_code.getText());
                     product = product_dao.searchProductByCode(id);

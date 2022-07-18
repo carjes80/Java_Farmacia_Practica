@@ -102,16 +102,16 @@ public class CustomersDao {
 
     //Eliminar cliente
     public boolean deleteCustomerQuery(int id) {
-        
+
         String query = "DELETE FROM customers WHERE id = " + id;
-       // String query_confirm = "SELECT * FROM customers WHERE id =" + id;
+        // String query_confirm = "SELECT * FROM customers WHERE id =" + id;
         try {
-            
+
             if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Cliente " + id, " PRECAUCIÓN ",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 conn = cn.getConnection();
-            pst = conn.prepareStatement(query);
-            pst.execute();
+                pst = conn.prepareStatement(query);
+                pst.execute();
                 return true;
             } else {
                 return false;
@@ -121,5 +121,27 @@ public class CustomersDao {
             JOptionPane.showMessageDialog(null, "Error al eliminar al cliente" + e);
             return false;
         }
+    }
+
+    public Customers searchCustomerById(int id) {
+        String query_search_customer = "SELECT * FROM customers WHERE id = " + id;
+        Customers customerById = new Customers();
+        customerById.setFull_name("");
+        try {
+            conn = cn.getConnection();
+            pst = conn.prepareStatement(query_search_customer);
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                
+                customerById.setFull_name(rs.getString("fullname"));
+            }
+            return customerById;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            customerById.setFull_name("");
+            return customerById;
+        }
+        
     }
 }

@@ -11,6 +11,7 @@ import controllers.CustomerController;
 import controllers.EmployeesController;
 import controllers.ProductsController;
 import controllers.PurchasesController;
+import controllers.SaleController;
 import controllers.SettingsController;
 import controllers.SupplierController;
 import models.Categories;
@@ -25,6 +26,8 @@ import models.Products;
 import models.ProductsDao;
 import models.Purchases;
 import models.PurchasesDao;
+import models.Sales;
+import models.SalesDAO;
 import models.Suppliers;
 import models.SuppliesDAO;
 
@@ -58,6 +61,10 @@ public class SystemView extends javax.swing.JFrame {
     Purchases purchase = new Purchases();
     PurchasesDao purchase_dao = new PurchasesDao();
     
+    //sales
+    Sales sale = new Sales();
+    SalesDAO sale_dao = new SalesDAO();
+    
     
     public SystemView() {
         initComponents();
@@ -89,7 +96,10 @@ public class SystemView extends javax.swing.JFrame {
         product_section.ListAllProducts();
         //llamamos al controlador de purchases
         PurchasesController purchase_section = new PurchasesController(purchase,purchase_dao,this);
-        //purchase_section.ListAllProducts();
+        //purchase_section.ListAllProducts();.
+        
+        SaleController sales_section = new SaleController(sale,sale_dao,this);
+        
         
     }
 
@@ -894,16 +904,10 @@ public class SystemView extends javax.swing.JFrame {
 
         txt_sale_product_code.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_product_code.setToolTipText("");
-        txt_sale_product_code.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_sale_product_codeActionPerformed(evt);
-            }
-        });
 
         txt_sale_product_name.setEditable(false);
         txt_sale_product_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_product_name.setToolTipText("");
-        txt_sale_product_name.setEnabled(false);
 
         txt_sale_quantity.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_quantity.setToolTipText("");
@@ -914,7 +918,6 @@ public class SystemView extends javax.swing.JFrame {
         txt_sale_total_to_pay.setEditable(false);
         txt_sale_total_to_pay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_total_to_pay.setToolTipText("");
-        txt_sale_total_to_pay.setEnabled(false);
 
         jLabel57.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel57.setText("Id:");
@@ -922,7 +925,6 @@ public class SystemView extends javax.swing.JFrame {
         txt_sale_product_id.setEditable(false);
         txt_sale_product_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_product_id.setToolTipText("");
-        txt_sale_product_id.setEnabled(false);
 
         jLabel58.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel58.setText("Precio:");
@@ -939,22 +941,18 @@ public class SystemView extends javax.swing.JFrame {
         txt_sale_price.setEditable(false);
         txt_sale_price.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_price.setToolTipText("");
-        txt_sale_price.setEnabled(false);
 
         txt_sale_subtotal.setEditable(false);
         txt_sale_subtotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_subtotal.setToolTipText("");
-        txt_sale_subtotal.setEnabled(false);
 
         txt_sale_stock.setEditable(false);
         txt_sale_stock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_stock.setToolTipText("");
-        txt_sale_stock.setEnabled(false);
 
         txt_sale_customer_name.setEditable(false);
         txt_sale_customer_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_sale_customer_name.setToolTipText("");
-        txt_sale_customer_name.setEnabled(false);
 
         btn_add_product_sale.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_add_product_sale.setText("Agregar");
@@ -1750,7 +1748,7 @@ public class SystemView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Factura de venta", "Cliente", "Empleado", "Total", "Fecha de venta"
+                "Factura", "Cliente", "Empleado", "Total", "Fecha de venta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1890,7 +1888,7 @@ public class SystemView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Perfil", jPanel11);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 1010, 580));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 1010, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1926,10 +1924,6 @@ public class SystemView extends javax.swing.JFrame {
     private void txt_employee_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_employee_searchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_employee_searchActionPerformed
-
-    private void txt_sale_product_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sale_product_codeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_sale_product_codeActionPerformed
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         if (evt.getSource() == btn_logout) {
@@ -2210,6 +2204,6 @@ public class SystemView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setTittle(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

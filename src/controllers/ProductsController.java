@@ -191,25 +191,13 @@ public class ProductsController implements ActionListener, KeyListener, MouseLis
         //System.out.println("e tiene "+ e);
         if (e.getSource() == views.jLabelProducts) {
             //System.out.println("Entrooooo");
-            if (rol.equals("Administrador")) {
-                //System.out.println("Entrooooo");
-                views.jTabbedPane1.setSelectedIndex(0);
-                cleanTable();
-                ListAllProducts();
 
-                cleanFields();
-                initFields();
+            views.jTabbedPane1.setSelectedIndex(0);
+            cleanTable();
+            ListAllProducts();
 
-            } else {
-                views.jTabbedPane1.setSelectedIndex(0);
-                cleanTable();
-                ListAllProducts();
-
-                cleanFields();
-                //views.jTabbedPane1.setEnabledAt(0, false);
-                //views.jLabelProducts.setEnabled(false);
-                //JOptionPane.showMessageDialog(null, "No tienes privilegios");
-            }
+            cleanFields();
+            initFields();
 
         } else if (e.getSource() == views.products_table) {
             initFields();

@@ -160,7 +160,7 @@ public class ProductsDao {
 
     //buscar producto por código
     public Products searchProductByCode(int code) {
-        String query = "SELECT products.id, products.name FROM products WHERE products.code = ?";
+        String query = "SELECT products.id, products.name, products.product_quantity, products.unit_price FROM products WHERE products.code = ?";
         Products product = new Products();
         try {
             conn = cn.getConnection();
@@ -171,6 +171,8 @@ public class ProductsDao {
             if (rs.next()) {
                 product.setId(rs.getInt("id"));
                 product.setName(rs.getString("name"));
+                  product.setProduct_quantity(rs.getInt("product_quantity"));
+                product.setUnit_price(rs.getDouble("unit_price"));
 
             }
         } catch (SQLException e) {
@@ -180,7 +182,7 @@ public class ProductsDao {
         return product;
     }
 
-    // traer la cantidad de productos
+   // traer la cantidad de productos
     public Products searchProductById(int id) {
         String query = "SELECT products.product_quantity FROM products WHERE products.id = ?";
         Products product = new Products();
@@ -188,9 +190,11 @@ public class ProductsDao {
             conn = cn.getConnection();
             pst = conn.prepareStatement(query);
             pst.setInt(1, id);
+            
             rs = pst.executeQuery();
             if (rs.next()) {
                 product.setProduct_quantity(rs.getInt("product_quantity"));
+               // product.setUnit_price(rs.getDouble("unit_price"));
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());

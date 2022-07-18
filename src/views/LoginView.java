@@ -22,6 +22,7 @@ public class LoginView extends javax.swing.JFrame {
         initComponents();//si no se coloca, no se inician los componentes del JFrame
         //controlador del login
         LoginController employee_login = new LoginController(employee,employee_dao,this);
+        
         setSize(930,415);//definimos el tamaño
         setResizable(false);// que no puedan cambiar el tamaño
         setTitle("Ingresar al sistema"); //definimos el titulo del panel

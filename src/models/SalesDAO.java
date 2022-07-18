@@ -42,7 +42,7 @@ public class SalesDAO {
 
     //registrar los detalles de la venta.
     public boolean registerSaleDetailQuery(int product_id, int sale_id, int sale_quantity, double sale_price, double sale_subtotal) {
-        String query = "INSERT INTO sale_detail (product_id, sale_id, sale_quantity, sale_price, sale_subtotal)"
+        String query = "INSERT INTO sale_details (product_id, sale_id, sale_quantity, sale_price, sale_subtotal)"
                 + "VALUES (?,?,?,?,?)";
         try {
             conn = cn.getConnection();
@@ -62,7 +62,7 @@ public class SalesDAO {
 
     }
 
-    // obtener el máximo ID para mi está mal porque la tabla no es autoincremental
+    // obtener el máximo ID para mi está mal porque la tabla no es autoincremental (lo cambié a autoincremental)
     public int saleID() {
 
         int id = 0;
@@ -88,8 +88,8 @@ public class SalesDAO {
 
         String query = "SELECT s.id AS invoice, c.fullname AS customer, e.full_name AS"
                 + " employee,  s.total, s.sale_date FROM sales s INNER JOIN customers c "
-                + "ON s.customer_id = c.id INNER JOIN employees e"
-                + "ON s.employee_id = e.id ORDER BY S.id ASC";
+                + "ON s.customer_id = c.id INNER JOIN employees e "
+                + "ON s.employee_id = e.id ORDER BY s.id ASC";
 
         try {
             conn = cn.getConnection();
@@ -103,7 +103,7 @@ public class SalesDAO {
                 sale.setCustomer_name(rs.getString("customer"));
                 sale.setEmployee_name(rs.getString("employee"));
                 sale.setTotal_to_pay(rs.getDouble("total"));
-                sale.setSale_date("sale_date");
+                sale.setSale_date(rs.getString("sale_date"));
 
                 list_sales.add(sale);
 
