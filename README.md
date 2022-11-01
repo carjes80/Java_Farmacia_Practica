@@ -1,4 +1,4 @@
-### Pharmacy App
+# Pharmacy App
 I'm just trying to practice POO, SQL DB, MVC Model...
 
 <p align="left">
@@ -7,11 +7,11 @@ I'm just trying to practice POO, SQL DB, MVC Model...
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Apache_NetBeans_Logo.svg/1776px-Apache_NetBeans_Logo.svg.png" alt="netbeans" width="40" height="40"/>
 </p>
 
-### Screenshots
-# Login
+## Screenshots
+### Login, Main and working with SQL
 <p align="left"><img src="https://raw.githubusercontent.com/carjes80/Java_Farmacia_Practica/master/src/images/Login.JPG" alt="Login"/></p>
-# Main
+
 <p align="left"><img src="https://raw.githubusercontent.com/carjes80/Java_Farmacia_Practica/master/src/images/app.JPG" alt="main"/></p>
-# MySQL
+
 <p align="left"><img src="https://raw.githubusercontent.com/carjes80/Java_Farmacia_Practica/master/src/images/MySQL.JPG" alt="MySQL"/></p>
 
